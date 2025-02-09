@@ -1,0 +1,72 @@
+[gd_scene load_steps=7 format=3 uid="uid://djj1vluao5uaa"]
+
+[ext_resource type="Script" path="res://scripts/henchman.gd" id="1_mo7wo"]
+[ext_resource type="Texture2D" uid="uid://wq8f0qy1twpc" path="res://envs/ComfyUI_00760_.png" id="2_heo0m"]
+[ext_resource type="Resource" uid="uid://i6twvb8eyfs6" path="res://resources/asset_holder.tres" id="2_pp41q"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_pd2vk"]
+radius = 177.503
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ritwg"]
+radius = 222.02
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_3duo0"]
+radius = 3245.76
+
+[node name="Henchman" type="CharacterBody2D" groups=["enemies"]]
+scale = Vector2(2, 2)
+collision_layer = 8
+collision_mask = 31
+script = ExtResource("1_mo7wo")
+asset_holder = ExtResource("2_pp41q")
+
+[node name="hitbox" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_pd2vk")
+
+[node name="life" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 153.0
+offset_top = -34.0
+offset_right = 384.0
+offset_bottom = -2.0
+rotation = -1.5708
+metadata/_edit_use_anchors_ = true
+
+[node name="life_bar" type="ColorRect" parent="life"]
+layout_mode = 1
+offset_left = 1.0
+offset_right = 167.0
+offset_bottom = 29.0
+size_flags_horizontal = 3
+metadata/_edit_use_anchors_ = true
+
+[node name="attack_zone" type="Area2D" parent="."]
+collision_layer = 8
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="attack_zone"]
+shape = SubResource("CircleShape2D_ritwg")
+
+[node name="detect_player" type="Area2D" parent="."]
+collision_layer = 8
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="detect_player"]
+position = Vector2(23, 261)
+scale = Vector2(1, 0.5)
+shape = SubResource("CircleShape2D_3duo0")
+
+[node name="character" type="Polygon2D" parent="."]
+clip_children = 2
+offset = Vector2(-254.89, -190)
+texture = ExtResource("2_heo0m")
+polygon = PackedVector2Array(249.966, 22.9303, 172.728, 29.2662, 61.0958, 63.9627, 32.7352, 157.191, 30.0198, 281.193, 38.7694, 403.989, 113.895, 447.736, 227.337, 482.131, 310.911, 483.036, 427.974, 482.433, 487.411, 441.401, 499.177, 267.918, 464.179, 149.648, 371.554, 50.6875, 306.083, 27.1542)
+uv = PackedVector2Array(249.966, 22.9303, 172.728, 29.2662, 61.0958, 63.9627, 32.7352, 157.191, 30.0198, 281.193, 38.7694, 403.989, 113.895, 447.736, 227.337, 482.131, 310.911, 483.036, 427.974, 482.433, 487.411, 441.401, 499.177, 267.918, 464.179, 149.648, 371.554, 50.6875, 306.083, 27.1542)
+
+[node name="cooldown" type="Timer" parent="."]
+
+[connection signal="body_entered" from="attack_zone" to="." method="_on_attack_zone_body_entered"]
+[connection signal="body_entered" from="detect_player" to="." method="_on_detect_player_body_entered"]
+[connection signal="body_exited" from="detect_player" to="." method="_on_detect_player_body_exited"]
+[connection signal="timeout" from="cooldown" to="." method="_on_cooldown_timeout"]

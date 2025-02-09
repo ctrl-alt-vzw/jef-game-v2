@@ -1,0 +1,75 @@
+[gd_scene load_steps=13 format=3 uid="uid://bgvhcsddarmbk"]
+
+[ext_resource type="PackedScene" uid="uid://bsk8wikcl7yx6" path="res://scenes/Room.tscn" id="1_dqcck"]
+[ext_resource type="Script" path="res://scripts/main.gd" id="1_pyhyc"]
+[ext_resource type="Resource" uid="uid://i6twvb8eyfs6" path="res://resources/asset_holder.tres" id="2_h28fi"]
+[ext_resource type="Shader" path="res://shaders/hexgrid.gdshader" id="2_k8bqp"]
+[ext_resource type="PackedScene" uid="uid://bcg3h56fc5vip" path="res://scenes/player_v_2.tscn" id="3_qu4ut"]
+[ext_resource type="PackedScene" uid="uid://1ce2p6louwjw" path="res://scenes/start_screen.tscn" id="8_myeg8"]
+
+[sub_resource type="Gradient" id="Gradient_k7l8n"]
+offsets = PackedFloat32Array(0, 0.739346, 0.979187)
+colors = PackedColorArray(0, 0, 0, 1, 0.67451, 1, 1, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_fsvb8"]
+gradient = SubResource("Gradient_k7l8n")
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_j4ifr"]
+
+[sub_resource type="Sky" id="Sky_ds2rt"]
+sky_material = SubResource("ProceduralSkyMaterial_j4ifr")
+
+[sub_resource type="Environment" id="Environment_p3o7c"]
+background_mode = 3
+sky = SubResource("Sky_ds2rt")
+ambient_light_source = 3
+ambient_light_color = Color(0.890146, 0.435385, 0.346327, 1)
+tonemap_mode = 2
+tonemap_white = 6.0
+glow_enabled = true
+glow_intensity = 0.05
+glow_bloom = 0.1
+glow_hdr_luminance_cap = 10.0
+adjustment_color_correction = SubResource("GradientTexture1D_fsvb8")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_muhei"]
+shader = ExtResource("2_k8bqp")
+shader_parameter/size = Vector2(32, 28)
+
+[node name="GAME" type="Node2D"]
+script = ExtResource("1_pyhyc")
+asset_holder = ExtResource("2_h28fi")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_p3o7c")
+
+[node name="Room" parent="." instance=ExtResource("1_dqcck")]
+material = SubResource("ShaderMaterial_muhei")
+
+[node name="player_v2" parent="." instance=ExtResource("3_qu4ut")]
+position = Vector2(-85, -3.8147e-06)
+scale = Vector2(0.2, 0.2)
+
+[node name="Camera2D3" type="Camera2D" parent="player_v2"]
+position = Vector2(20, -570)
+scale = Vector2(20, 20)
+zoom = Vector2(2, 2)
+position_smoothing_speed = 30.0
+
+[node name="bullets_group" type="Node2D" parent="."]
+unique_name_in_owner = true
+
+[node name="DirectionalLight2D" type="DirectionalLight2D" parent="."]
+energy = 0.1
+shadow_enabled = true
+shadow_color = Color(0, 0, 0, 0.121569)
+height = 0.52
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+visible = false
+position = Vector2(-26, -74)
+height = 10.0
+
+[node name="START_SCREEN" parent="." instance=ExtResource("8_myeg8")]
+
+[connection signal="loaded_assets" from="START_SCREEN" to="." method="_on_start_screen_loaded_assets"]

@@ -1,0 +1,42 @@
+[gd_scene load_steps=7 format=3 uid="uid://glcfh5odn087"]
+
+[ext_resource type="Script" path="res://scripts/bullet.gd" id="1_pj1lo"]
+[ext_resource type="Texture2D" uid="uid://ccce0tj7xqt5y" path="res://envs/henchemen_mask.png" id="2_a656s"]
+[ext_resource type="Resource" uid="uid://i6twvb8eyfs6" path="res://resources/asset_holder.tres" id="2_g4epv"]
+[ext_resource type="Texture2D" uid="uid://dftfbhwpmvork" path="res://envs/water_weapons.png" id="3_uxu4v"]
+[ext_resource type="Texture2D" uid="uid://enh8sannq5wq" path="res://envs/ComfyUI_00746_.png" id="4_llrxk"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_l65hv"]
+radius = 54.1567
+
+[node name="Bullet" type="Area2D"]
+scale = Vector2(30, 30)
+collision_layer = 16
+collision_mask = 29
+script = ExtResource("1_pj1lo")
+asset_holder = ExtResource("2_g4epv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_l65hv")
+
+[node name="HenchemenMask" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(1.95, 13.75)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("2_a656s")
+
+[node name="WaterWeapons" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(-30.55, 0.1)
+texture = ExtResource("3_uxu4v")
+region_enabled = true
+region_rect = Rect2(322.5, 100.25, 151.5, 89.5)
+
+[node name="tex" type="Polygon2D" parent="."]
+scale = Vector2(0.5, 0.5)
+offset = Vector2(-430.27, -143.93)
+texture = ExtResource("4_llrxk")
+polygon = PackedVector2Array(309.141, 144.749, 351.053, 128.05, 396.304, 111.35, 425.501, 102.838, 446.942, 106.717, 470.321, 125.464, 472.153, 142.81, 471.83, 158.54, 458.901, 175.994, 439.292, 185.152, 416.236, 184.398, 396.842, 177.934, 348.682, 161.88)
+uv = PackedVector2Array(332.198, 143.349, 351.053, 128.05, 396.304, 111.35, 425.501, 102.838, 446.942, 106.717, 470.321, 125.464, 472.153, 142.81, 471.83, 158.54, 458.901, 175.994, 439.292, 185.152, 416.236, 184.398, 396.842, 177.934, 348.682, 161.88)
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

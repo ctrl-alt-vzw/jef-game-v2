@@ -1,0 +1,196 @@
+[gd_scene load_steps=5 format=3 uid="uid://1ce2p6louwjw"]
+
+[ext_resource type="Script" path="res://scripts/start_screen.gd" id="1_c4eu0"]
+[ext_resource type="Theme" uid="uid://c6sbq1aabfkka" path="res://style/interface.tres" id="1_hnohu"]
+[ext_resource type="Resource" uid="uid://i6twvb8eyfs6" path="res://resources/asset_holder.tres" id="2_fwssy"]
+[ext_resource type="Texture2D" uid="uid://b20i4qajkmxlf" path="res://assets/puck_diagram.png" id="2_god74"]
+
+[node name="START_SCREEN" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_c4eu0")
+asset_holder = ExtResource("2_fwssy")
+
+[node name="choose_game_overlay" type="CanvasLayer" parent="."]
+
+[node name="Control" type="Control" parent="choose_game_overlay"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="choose_game_overlay/Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 0
+theme_override_constants/margin_top = 0
+theme_override_constants/margin_right = 0
+theme_override_constants/margin_bottom = 0
+
+[node name="Panel" type="Panel" parent="choose_game_overlay/Control/MarginContainer"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="choose_game_overlay/Control/MarginContainer/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 100
+theme_override_constants/margin_top = 100
+theme_override_constants/margin_right = 100
+theme_override_constants/margin_bottom = 100
+
+[node name="Panel" type="Panel" parent="choose_game_overlay/Control/MarginContainer/Panel/MarginContainer"]
+layout_mode = 2
+theme = ExtResource("1_hnohu")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="choose_game_overlay/Control/MarginContainer/Panel/MarginContainer/Panel"]
+custom_minimum_size = Vector2(1200, 0)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -600.0
+offset_top = -270.0
+offset_right = 600.0
+offset_bottom = 270.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="choose_game_overlay/Control/MarginContainer/Panel/MarginContainer/Panel/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 38
+text = "Which game is yours?
+Welk spel is van jou?
+Quel est ton jeu ?"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="game_button_holders" type="VBoxContainer" parent="choose_game_overlay/Control/MarginContainer/Panel/MarginContainer/Panel/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 6
+
+[node name="overlay" type="CanvasLayer" parent="."]
+
+[node name="puck_id" type="LineEdit" parent="overlay"]
+offset_left = 1248.5
+offset_top = 1694.0
+offset_right = 2591.5
+offset_bottom = 2078.0
+
+[node name="Control" type="Control" parent="overlay"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="overlay/Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 0
+theme_override_constants/margin_top = 0
+theme_override_constants/margin_right = 0
+theme_override_constants/margin_bottom = 0
+
+[node name="Panel" type="Panel" parent="overlay/Control/MarginContainer"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="overlay/Control/MarginContainer/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 100
+theme_override_constants/margin_top = 100
+theme_override_constants/margin_right = 100
+theme_override_constants/margin_bottom = 100
+
+[node name="Panel" type="Panel" parent="overlay/Control/MarginContainer/Panel/MarginContainer"]
+layout_mode = 2
+theme = ExtResource("1_hnohu")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="overlay/Control/MarginContainer/Panel/MarginContainer/Panel"]
+custom_minimum_size = Vector2(1200, 0)
+layout_mode = 1
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -500.0
+offset_right = 500.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="overlay/Control/MarginContainer/Panel/MarginContainer/Panel/VBoxContainer"]
+custom_minimum_size = Vector2(1000, 1000)
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_top = 50
+theme_override_constants/margin_right = 50
+theme_override_constants/margin_bottom = 50
+
+[node name="TextureRect" type="TextureRect" parent="overlay/Control/MarginContainer/Panel/MarginContainer/Panel/VBoxContainer/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("2_god74")
+stretch_mode = 4
+
+[node name="HBoxContainer" type="VBoxContainer" parent="overlay/Control/MarginContainer/Panel/MarginContainer/Panel/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="overlay/Control/MarginContainer/Panel/MarginContainer/Panel/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 6
+theme = ExtResource("1_hnohu")
+theme_override_font_sizes/font_size = 51
+text = "Leg de puck in de lezer om te beginnen"
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="overlay/Control/MarginContainer/Panel/MarginContainer/Panel/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 6
+theme = ExtResource("1_hnohu")
+theme_override_font_sizes/font_size = 51
+text = "Placez le palet dans le lecteur pour commencer"
+horizontal_alignment = 1
+
+[node name="Label3" type="Label" parent="overlay/Control/MarginContainer/Panel/MarginContainer/Panel/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 6
+theme = ExtResource("1_hnohu")
+theme_override_font_sizes/font_size = 51
+text = "Place the puck in the reader to get started"
+horizontal_alignment = 1
+
+[node name="MarginContainer2" type="MarginContainer" parent="overlay/Control/MarginContainer/Panel/MarginContainer/Panel/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="HTTPRequest" type="HTTPRequest" parent="."]
+
+[connection signal="text_submitted" from="overlay/puck_id" to="." method="_on_puck_id_text_submitted"]

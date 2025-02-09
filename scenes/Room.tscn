@@ -1,0 +1,86 @@
+[gd_scene load_steps=7 format=4 uid="uid://bsk8wikcl7yx6"]
+
+[ext_resource type="Script" path="res://scripts/room.gd" id="1_bycf3"]
+[ext_resource type="Texture2D" uid="uid://dmc7nd2t2ecvq" path="res://envs/ComfyUI_00382_.png" id="2_1b63j"]
+[ext_resource type="Resource" uid="uid://i6twvb8eyfs6" path="res://resources/asset_holder.tres" id="2_4aqk2"]
+[ext_resource type="PackedScene" uid="uid://dwxrcrpv1rc80" path="res://scenes/bbeg.tscn" id="4_rkc3g"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_kocte"]
+texture = ExtResource("2_1b63j")
+margins = Vector2i(10, 16)
+separation = Vector2i(2, 8)
+texture_region_size = Vector2i(122, 115)
+0:0/0 = 0
+0:0/0/modulate = Color(0.77084, 0.770839, 0.770839, 1)
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+3:1/0 = 0
+0:2/0 = 0
+0:2/0/y_sort_origin = 1
+0:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-1.23743, -18.3848, -56.0382, 12.7279, -0.176773, 43.4871, 58.1595, 10.9602)
+1:2/0 = 0
+1:2/0/y_sort_origin = 1
+1:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-1.23743, -18.3848, -56.0382, 12.7279, -0.176773, 43.4871, 58.1595, 10.9602)
+2:2/0 = 0
+2:2/0/y_sort_origin = 1
+2:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-1.23743, -18.3848, -56.0382, 12.7279, -0.176773, 43.4871, 58.1595, 10.9602)
+3:2/0 = 0
+3:2/0/y_sort_origin = 1
+3:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-1.23743, -18.3848, -56.0382, 12.7279, -0.176773, 43.4871, 58.1595, 10.9602)
+0:3/0 = 0
+0:3/0/y_sort_origin = 1
+0:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-1.23743, -18.3848, -56.0382, 12.7279, -0.176773, 43.4871, 58.1595, 10.9602)
+1:3/0 = 0
+1:3/0/y_sort_origin = 1
+1:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-1.23743, -18.3848, -56.0382, 12.7279, -0.176773, 43.4871, 58.1595, 10.9602)
+2:3/0 = 0
+2:3/0/y_sort_origin = 1
+2:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-1.23743, -18.3848, -56.0382, 12.7279, -0.176773, 43.4871, 58.1595, 10.9602)
+3:3/0 = 0
+3:3/0/y_sort_origin = 1
+3:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-1.23743, -18.3848, -56.0382, 12.7279, -0.176773, 43.4871, 58.1595, 10.9602)
+0:4/0 = 0
+1:4/0 = 0
+2:4/0 = 0
+3:4/0 = 0
+3:5/0 = 0
+1:6/0 = 0
+2:6/0 = 0
+3:6/0 = 0
+0:7/0 = 0
+1:7/0 = 0
+2:7/0 = 0
+3:7/0 = 0
+0:5/0 = 0
+1:5/0 = 0
+2:5/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_a72m1"]
+tile_shape = 1
+tile_layout = 5
+tile_offset_axis = 1
+tile_size = Vector2i(114, 59)
+physics_layer_0/collision_layer = 1
+physics_layer_0/collision_mask = 31
+sources/1 = SubResource("TileSetAtlasSource_kocte")
+
+[node name="Room" type="Node2D"]
+script = ExtResource("1_bycf3")
+asset_holder = ExtResource("2_4aqk2")
+
+[node name="TileMapLayer" type="TileMapLayer" parent="."]
+scale = Vector2(0.7, 0.7)
+tile_map_data = PackedByteArray("AAD8//3/AQADAAEAAAD8//7/AQAAAAAAAAD8////AQABAAAAAAD8/wAAAQAAAAEAAAD8/wEAAQABAAEAAAD8/wIAAQACAAEAAAD8/wMAAQACAAEAAAD9//3/AQABAAAAAAD9//7/AQACAAEAAAD9////AQABAAEAAAD9/wAAAQABAAAAAAD9/wEAAQABAAAAAAD9/wIAAQACAAEAAAD9/wMAAQAAAAAAAAD+//3/AQACAAAAAAD+//7/AQAAAAEAAAD+////AQAAAAEAAAD+/wAAAQACAAAAAAD+/wEAAQADAAEAAAD+/wIAAQABAAEAAAD+/wMAAQABAAEAAAD///3/AQABAAAAAAD///7/AQABAAEAAAD/////AQAAAAEAAAD//wAAAQAAAAAAAAD//wEAAQAAAAAAAAD//wIAAQADAAEAAAD//wMAAQACAAEAAAAAAP3/AQABAAAAAAAAAP7/AQADAAEAAAAAAP//AQAAAAEAAAAAAAAAAQABAAEAAAAAAAEAAQACAAAAAAAAAAIAAQAAAAAAAAAAAAMAAQACAAAAAAABAP3/AQAAAAEAAAABAP7/AQADAAEAAAABAP//AQADAAEAAAABAAAAAQACAAEAAAABAAEAAQACAAEAAAABAAIAAQAAAAAAAAABAAMAAQACAAEAAAACAP3/AQABAAAAAAACAP7/AQABAAAAAAACAP//AQADAAAAAAACAAAAAQADAAAAAAACAAEAAQACAAAAAAACAAIAAQADAAEAAAACAAMAAQAAAAEAAAD7//z/AQADAAMAAAD8//z/AQABAAMAAAD9//z/AQACAAIAAAD+//z/AQAAAAIAAAD///z/AQABAAIAAAAAAPz/AQAAAAMAAAABAPz/AQACAAIAAAACAPz/AQAAAAMAAAADAPz/AQADAAIAAAADAP3/AQAAAAMAAAADAP7/AQAAAAMAAAADAP//AQAAAAMAAAADAAAAAQADAAIAAAADAAEAAQADAAIAAAADAAIAAQABAAIAAAADAAMAAQADAAIAAAD8/wQAAQAAAAIAAAD9/wQAAQABAAIAAAD+/wQAAQABAAIAAAD//wQAAQACAAMAAAAAAAQAAQADAAIAAAABAAQAAQABAAMAAAACAAQAAQADAAMAAAADAAQAAQABAAIAAAD7//3/AQABAAMAAAD7//7/AQABAAIAAAD7////AQADAAMAAAD7/wAAAQADAAMAAAD7/wEAAQACAAMAAAD7/wIAAQABAAIAAAD7/wMAAQACAAMAAAD7/wQAAQAAAAIAAAA=")
+tile_set = SubResource("TileSet_a72m1")
+
+[node name="henchmen" type="Node2D" parent="."]
+
+[node name="NPCs" type="Node2D" parent="."]
+
+[node name="bbeg" parent="." instance=ExtResource("4_rkc3g")]
+position = Vector2(-176, -3)
+scale = Vector2(0.13, 0.13)

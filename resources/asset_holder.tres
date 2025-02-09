@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="Asset_holder" load_steps=2 format=3 uid="uid://i6twvb8eyfs6"]
+
+[ext_resource type="Script" path="res://scripts/game_asset.gd" id="1_tkdt8"]
+
+[resource]
+script = ExtResource("1_tkdt8")
+UUID = ""
+title = "title"
+story_elements = ""
+goal = ""
+npc_quote = ""

@@ -1,0 +1,44 @@
+[gd_scene load_steps=3 format=3 uid="uid://2iflei72hpiy"]
+
+[ext_resource type="Script" path="res://menu.gd" id="1_gdaqh"]
+[ext_resource type="Theme" uid="uid://c6sbq1aabfkka" path="res://style/interface.tres" id="2_uwacl"]
+
+[node name="Menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_gdaqh")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_uwacl")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+theme = ExtResource("2_uwacl")
+
+[node name="id_input" type="LineEdit" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("2_uwacl")
+placeholder_text = "ID of the game"
+
+[node name="Run" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("2_uwacl")
+text = "RUN
+"
+
+[node name="Quit" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[connection signal="text_submitted" from="MarginContainer/VBoxContainer/id_input" to="." method="_on_id_text_submitted"]
+[connection signal="button_down" from="MarginContainer/VBoxContainer/Run" to="." method="_on_run_button_down"]
+[connection signal="button_down" from="MarginContainer/VBoxContainer/Quit" to="." method="_on_quit_button_down"]
